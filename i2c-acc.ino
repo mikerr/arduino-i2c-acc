@@ -12,14 +12,20 @@ void setup()
   
   delay(100);
 
+   // send wake up signal
+  Wire.beginTransmission(I2C_ADDRESS); 
+  Wire.write(0);
+  Wire.write(0);
+  error = Wire.endTransmission();
     
-    // send wake up signal
-    Wire.beginTransmission(I2C_ADDRESS); 
-    Wire.write(0);
-    Wire.write(0);
-    error = Wire.endTransmission();
-     delay(200);
+  if (error==4) 
+    {
+      Serial.print("Connection error");
+    }     
     
+  // allow time to start
+  delay(200);
+
 }
 
 
@@ -27,22 +33,23 @@ void loop()
 {
   byte error;
  
-    
-    //ask for data
+    //set mode
     
     Wire.beginTransmission(I2C_ADDRESS); 
     Wire.write(1);
     error = Wire.endTransmission();
 
-    // now receive data 
+    // now get data 
+    
     Wire.requestFrom(I2C_ADDRESS, 4); // read a byte
     while(Wire.available())
       {
-      byte c = Wire.read(); // receive byte as a character
+      byte c = Wire.read(); 
       
       Serial.print(" :");
-      Serial.print(c,HEX);         // print the character
+      Serial.print(c,HEX);         
       }
   Serial.println("");
-  delay(1000);           // wait 5 seconds for next scan
+  
+  delay(1000);           
 }
