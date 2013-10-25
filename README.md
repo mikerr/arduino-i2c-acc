@@ -3,7 +3,7 @@ arduino-i2c-acc
 
 Arduino code for the gravitech I2C accelerometer module
 
-I2C +/-2.0g Dual Axis Accelerometer
+I2C-ACC +/-2.0g Dual Axis Accelerometer
 
 http://www.gravitech.us/i2cduaxac.html
 
