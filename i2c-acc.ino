@@ -8,7 +8,7 @@ void setup()
   Wire.begin();
 
   Serial.begin(9600);
-  Serial.println("\nI2C Scanner");
+  Serial.println("\ni2c Acc test");
   
   delay(100);
 
